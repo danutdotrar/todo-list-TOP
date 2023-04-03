@@ -24,7 +24,39 @@ body {
 }
 
 .sidebar {
-    width: 200px;
+    width: 250px;
     text-align: center;
     background-color: coral;
+}
+
+/* CONTENT */
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .todo-task {
+    margin: 30px;
+    height: 60px;
+    padding: 0 20px;
+    outline: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .todo-task .left-part {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.content .todo-task .right-part {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.content .todo-task .right-part .delete-task {
+    font-size: 30px;
 }
