@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+}
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+.header {
+    text-align: center;
+    padding: 40px;
+    background-color: red;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 200px;
+    text-align: center;
+    background-color: coral;
+}
