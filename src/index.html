@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../src/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <title>To-Do List</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>TODO LIST</h1>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <!-- <div class="todo inbox" id="inbox">Inbox</div> -->
+
+                <div class="projects" id="projects">
+                    <h3>Projects</h3>
+
+                    <div class="project-list" id="project-list">
+                        <div class="todo project-task" id="task">
+                            Project name 1
+                        </div>
+                        <div class="todo project-task" id="task">
+                            Project name
+                        </div>
+                        <div class="todo project-task" id="task">
+                            Project name
+                        </div>
+                    </div>
+
+                    <div class="todo add-project" id="add-project">
+                        + Add Project
+                    </div>
+                </div>
+            </div>
+
+            <div class="content" id="content">
+                <div class="content-title" id="content-title">
+                    <h2 class="title" id="title">Project name 1</h2>
+                </div>
+
+                <div class="task-list" id="task-list">
+                    <div class="todo-task" id="todo-task">
+                        <div class="left-part">
+                            <input type="radio" name="" />
+                            <div class="task-name" id="task-name">Grocery</div>
+                        </div>
+
+                        <div class="right-part">
+                            <input type="date" />
+                            <div class="delete-task" id="delete-task">
+                                &times;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="todo-task" id="todo-task">
+                        <div class="left-part">
+                            <input type="radio" name="" />
+                            <div class="task-name" id="task-name">Grocery</div>
+                        </div>
+
+                        <div class="right-part">
+                            <input type="date" />
+                            <div class="delete-task" id="delete-task">
+                                &times;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add-task" id="add-task">+ Add task</div>
+            </div>
+        </div>
+
+        <!-- MODAL :) -->
+
+        <div class="modal-container hidden" id="modal">
+            <div class="modal">
+                <button class="close-btn" id="close">
+                    <i class="fa fa-times"></i>
+                </button>
+
+                <div class="modal-content">
+                    <form id="form-container">
+                        <div class="form-input">
+                            <label for="title">Task name</label>
+                            <input type="text" id="title" required />
+                            <!-- <small class="hidden" id="hidden"
+                                >Please enter a response.</small
+                            > -->
+                        </div>
+
+                        <div class="form-input">
+                            <label for="date">Select a date</label>
+                            <input id="datePicker" type="date" name="date" />
+                        </div>
+
+                        <div class="form-input priority" id="priority">
+                            <label for="objects">Select priority</label>
+                            <select id="objects" name="objects">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+
+                        <button class="submit-task" id="submit-task">
+                            Add Task
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
