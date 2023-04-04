@@ -20,19 +20,35 @@
 
         <div class="container">
             <div class="sidebar">
-                <div class="todo">To Do</div>
+                <div class="todo">Inbox</div>
             </div>
 
-            <div class="content">
-                <div class="todo-task">
+            <div class="content" id="content">
+                <div class="content-title" id="content-title">
+                    <h2>Inbox</h2>
+                </div>
+
+                <div class="todo-task" id="todo-task">
                     <div class="left-part">
                         <button>OK</button>
-                        <div class="task-name">Grocery</div>
+                        <div class="task-name" id="task-name">Grocery</div>
                     </div>
 
                     <div class="right-part">
                         <input type="date" />
-                        <div class="delete-task">&times;</div>
+                        <div class="delete-task" id="delete-task">&times;</div>
+                    </div>
+                </div>
+
+                <div class="todo-task" id="todo-task">
+                    <div class="left-part">
+                        <button>OK</button>
+                        <div class="task-name" id="task-name">Grocery</div>
+                    </div>
+
+                    <div class="right-part">
+                        <input type="date" />
+                        <div class="delete-task" id="delete-task">&times;</div>
                     </div>
                 </div>
             </div>

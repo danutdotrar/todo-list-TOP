@@ -5,6 +5,12 @@
     font-family: "Lato", sans-serif;
 }
 
+:root {
+    --green-color: #104547;
+    --sidebar-green: #acbdb6;
+    --box-color: #e4e1e1;
+}
+
 html,
 body {
     min-height: 100vh;
@@ -15,7 +21,10 @@ body {
 .header {
     text-align: center;
     padding: 40px;
-    background-color: red;
+    background-color: var(--green-color);
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
 .container {
@@ -24,9 +33,25 @@ body {
 }
 
 .sidebar {
-    width: 250px;
+    width: 300px;
     text-align: center;
-    background-color: coral;
+    background-color: var(--sidebar-green);
+    padding: 35px 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .todo {
+    background-color: var(--box-color);
+    height: 35px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    border-left: 4px solid var(--green-color);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 
 /* CONTENT */
@@ -34,15 +59,25 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #fffffa;
+    padding: 40px 100px;
+}
+
+.content .content-title h2 {
+    margin-bottom: 30px;
 }
 
 .content .todo-task {
-    margin: 30px;
     height: 60px;
+    min-width: 400px;
     padding: 0 20px;
-    outline: 1px solid red;
+    background-color: var(--box-color);
+    border-left: 4px solid var(--green-color);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .content .todo-task .left-part {
