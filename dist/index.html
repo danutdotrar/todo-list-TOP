@@ -20,37 +20,65 @@
 
         <div class="container">
             <div class="sidebar">
-                <div class="todo">Inbox</div>
+                <!-- <div class="todo inbox" id="inbox">Inbox</div> -->
+
+                <div class="projects" id="projects">
+                    <h3>Projects</h3>
+
+                    <div class="project-list" id="project-list">
+                        <div class="todo project-task" id="task">
+                            Project name 1
+                        </div>
+                        <div class="todo project-task" id="task">
+                            Project name
+                        </div>
+                        <div class="todo project-task" id="task">
+                            Project name
+                        </div>
+                    </div>
+
+                    <div class="todo add-project" id="add-project">
+                        + Add Project
+                    </div>
+                </div>
             </div>
 
             <div class="content" id="content">
                 <div class="content-title" id="content-title">
-                    <h2>Inbox</h2>
+                    <h2 class="title" id="title">Project name 1</h2>
                 </div>
 
-                <div class="todo-task" id="todo-task">
-                    <div class="left-part">
-                        <button>OK</button>
-                        <div class="task-name" id="task-name">Grocery</div>
+                <div class="task-list" id="task-list">
+                    <div class="todo-task" id="todo-task">
+                        <div class="left-part">
+                            <button>OK</button>
+                            <div class="task-name" id="task-name">Grocery</div>
+                        </div>
+
+                        <div class="right-part">
+                            <input type="date" />
+                            <div class="delete-task" id="delete-task">
+                                &times;
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="right-part">
-                        <input type="date" />
-                        <div class="delete-task" id="delete-task">&times;</div>
+                    <div class="todo-task" id="todo-task">
+                        <div class="left-part">
+                            <button>OK</button>
+                            <div class="task-name" id="task-name">Grocery</div>
+                        </div>
+
+                        <div class="right-part">
+                            <input type="date" />
+                            <div class="delete-task" id="delete-task">
+                                &times;
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="todo-task" id="todo-task">
-                    <div class="left-part">
-                        <button>OK</button>
-                        <div class="task-name" id="task-name">Grocery</div>
-                    </div>
-
-                    <div class="right-part">
-                        <input type="date" />
-                        <div class="delete-task" id="delete-task">&times;</div>
-                    </div>
-                </div>
+                <div class="add-task" id="add-task">+ Add task</div>
             </div>
         </div>
         <script src="main.js"></script>
