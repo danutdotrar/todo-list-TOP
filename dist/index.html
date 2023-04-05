@@ -33,12 +33,13 @@
                         <div class="todo project-task" id="task">
                             Project name 1
                         </div>
-                        <div class="todo project-task" id="task">
+
+                        <!-- <div class="todo project-task" id="task">
                             Project name
                         </div>
                         <div class="todo project-task" id="task">
                             Project name
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="todo add-project" id="add-project">
@@ -97,16 +98,38 @@
                 <div class="modal-content">
                     <form id="form-container">
                         <div class="form-input">
-                            <label for="title">Task name</label>
-                            <input type="text" id="title" required />
+                            <label for="project-name">Project name</label>
+                            <input
+                                type="text"
+                                id="project-name"
+                                name="project-name"
+                                required
+                            />
                             <!-- <small class="hidden" id="hidden"
                                 >Please enter a response.</small
                             > -->
                         </div>
 
                         <div class="form-input">
-                            <label for="date">Select a date</label>
-                            <input id="datePicker" type="date" name="date" />
+                            <label for="task-name">Task name</label>
+                            <input
+                                type="text"
+                                id="task-name"
+                                name="task-name"
+                                required
+                            />
+                            <!-- <small class="hidden" id="hidden"
+                                >Please enter a response.</small
+                            > -->
+                        </div>
+
+                        <div class="form-input">
+                            <label for="date-picker">Select a date</label>
+                            <input
+                                id="date-picker"
+                                type="date"
+                                name="date-picker"
+                            />
                         </div>
 
                         <div class="form-input priority" id="priority">

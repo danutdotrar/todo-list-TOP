@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"caasxwqWa\");\r\n\n\n//# sourceURL=webpack://todo-list-top/./src/index.js?");
+eval("const addProject = document.getElementById(\"add-project\");\r\n\r\n// Modal\r\nconst modal = document.getElementById(\"modal\");\r\nconst projectName = document.getElementById(\"project-name\");\r\nconst taskName = document.getElementById(\"task-name\");\r\nconst datePicker = document.getElementById(\"date-picker\");\r\nconst priorityLevel = document.getElementById(\"objects\");\r\nconst addTaskModal = document.getElementById(\"submit-task\");\r\nconst closeBtnModal = document.getElementById(\"close\");\r\n\r\n// When add project is pressed the modal opens\r\n// Insert project name, task name, date and priority in the modal (take the values)\r\n// When modal's button 'add task' is pressed, modal closes and the values from the form are inputted in the new task from the project content\r\n// The 'project name' will be added in the sidebar, this would be a div button\r\n// If 'project name' is clicked, then it will show the current project with the current tasks\r\n\n\n//# sourceURL=webpack://todo-list-top/./src/index.js?");
 
 /***/ })
 
