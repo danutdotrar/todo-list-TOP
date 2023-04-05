@@ -80,9 +80,21 @@ body {
     padding: 40px 100px;
 }
 
+.content .container-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .content .content-title h2 {
+    width: 100%;
     margin-bottom: 30px;
 }
+
+/* .content .content-title {
+    width: 100%;
+} */
 
 .content .task-list {
     width: 90%;
@@ -249,6 +261,10 @@ input[type="radio"]:checked {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.modal-project-container.hidden {
+    display: none;
 }
 
 .modal-project-container {

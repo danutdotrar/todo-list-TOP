@@ -33,13 +33,6 @@
                         <div class="todo project-task" id="task">
                             Project name 1
                         </div>
-
-                        <!-- <div class="todo project-task" id="task">
-                            Project name
-                        </div>
-                        <div class="todo project-task" id="task">
-                            Project name
-                        </div> -->
                     </div>
 
                     <div class="todo add-project" id="add-project">
@@ -49,31 +42,32 @@
             </div>
 
             <div class="content" id="content">
-                <div class="content-title" id="content-title">
-                    <h2 class="title" id="title">Project name 1</h2>
-                </div>
+                <div class="container-content" id="container-content">
+                    <div class="content-title" id="content-title">
+                        <h2 class="title" id="title">Project name 1</h2>
+                    </div>
 
-                <div class="task-list" id="task-list">
-                    <div class="todo-task" id="todo-task">
-                        <div class="left-part">
-                            <input type="radio" name="" />
-                            <div class="todo-task-name" id="todo-task-name">
-                                Grocery
+                    <div class="task-list" id="task-list">
+                        <div class="todo-task" id="todo-task">
+                            <div class="left-part">
+                                <input type="radio" name="" />
+                                <div class="todo-task-name" id="todo-task-name">
+                                    Grocery
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="right-part">
-                            <div class="priority-level" id="priority-level">
-                                High
-                            </div>
-                            <input type="date" />
-                            <div class="delete-task" id="delete-task">
-                                &times;
+                            <div class="right-part">
+                                <div class="priority-level" id="priority-level">
+                                    High
+                                </div>
+                                <input type="date" />
+                                <div class="delete-task" id="delete-task">
+                                    &times;
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="add-task" id="add-task">+ Add task</div>
             </div>
         </div>
@@ -81,7 +75,10 @@
         <!-- MODALS :) -->
 
         <!-- ADD PROJECT MODAL -->
-        <div class="modal-project-container">
+        <div
+            class="modal-project-container hidden"
+            id="modal-project-container"
+        >
             <div class="modal-project" id="modal-project">
                 <div class="form-input">
                     <label for="project-name">Project name</label>

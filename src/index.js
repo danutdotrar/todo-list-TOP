@@ -1,6 +1,6 @@
 const addProject = document.getElementById("add-project");
 const addTask = document.getElementById("add-task");
-
+const taskList = document.getElementById("task-list");
 // Task Modal
 const modal = document.getElementById("modal");
 const projectName = document.getElementById("project-name");
@@ -9,9 +9,11 @@ const datePicker = document.getElementById("date-picker");
 const priorityLevel = document.getElementById("objects");
 const addTaskModal = document.getElementById("submit-task");
 const closeBtnModal = document.getElementById("close-btn");
+const modalProject = document.getElementById("modal-project-container");
 
 // Add project modal
 const modalAddProject = document.getElementById("modal-project");
+const addProjectName = document.getElementById("add-project-name");
 
 // When add project is pressed the modal opens
 // Insert project name, task name, date and priority in the modal (take the values)
@@ -21,6 +23,7 @@ const modalAddProject = document.getElementById("modal-project");
 
 // Create an array that stores the todo tasks
 let todoArray = [];
+let content;
 
 // Todo task class
 class TodoTask {
@@ -45,21 +48,31 @@ function addTodoTaskList(e) {
         pushTaskToArray(taskName, datePicker, priorityLevel);
     }
 
-    // for (let i in todoArray) {
-    // }
+    for (let i in todoArray) {
+        let index = i;
+        content = ``;
+    }
 
     console.log(todoArray);
 }
 
 // Open add project modal
-function openProjectModal() {}
+function openProjectModal() {
+    modalProject.classList.remove("hidden");
+}
 
-// Open the modal
+// Set the project name and add it to array
+function setProjectName() {
+    // Remove modal
+    modalProject.classList.add("hidden");
+}
+
+// Open the task modal
 function openTaskModal() {
     modal.classList.remove("hidden");
 }
 
-// // Close the modal
+// Close the task modal
 function closeTaskModal() {
     modal.classList.add("hidden");
 }
@@ -68,3 +81,5 @@ function closeTaskModal() {
 addTask.addEventListener("click", openTaskModal);
 closeBtnModal.addEventListener("click", closeTaskModal);
 addTaskModal.addEventListener("click", addTodoTaskList);
+addProject.addEventListener("click", openProjectModal);
+addProjectName.addEventListener("click", setProjectName);
