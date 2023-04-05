@@ -1,7 +1,23 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = {
+    resolve: {
+        fallback: {
+            fs: false,
+            tls: false,
+            net: false,
+            path: false,
+            zlib: false,
+            http: false,
+            https: false,
+            stream: false,
+            crypto: false,
+            async_hooks: false,
+            "crypto-browserify": require.resolve("crypto-browserify"), //if you want to use this module also don't forget npm i crypto-browserify
+        },
+    },
     entry: "./src/index.js",
     mode: "development",
     output: {
@@ -11,9 +27,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             inject: false,
-            template: path.resolve(__dirname, "src/index.html"),
+            template: path.resolve(__dirname, "./src/index.html"),
             filename: "index.html",
         }),
+        new NodePolyfillPlugin(),
     ],
     module: {
         rules: [

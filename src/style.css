@@ -173,7 +173,7 @@ input[type="radio"]:checked {
     justify-content: center;
     align-items: center;
     animation-name: modalopen;
-    animation-duration: 1s;
+    animation-duration: 0.3s;
 }
 
 .modal-container.hidden {
@@ -236,6 +236,68 @@ input[type="radio"]:checked {
     height: 30px;
 }
 
+/* MODAL PROJECT */
+.modal-project {
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 30px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-project-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: modalopen;
+    animation-duration: 0.3s;
+}
+
+.modal-project .form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.modal-project .form-input label {
+    margin-bottom: 5px;
+}
+
+.modal-project .form-input input[type="text"] {
+    height: 30px;
+    width: 200px;
+    padding: 0 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+.modal-project .add-project-name {
+    background-color: var(--box-color);
+    height: 35px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    border: none;
+    /* border-left: 4px solid var(--green-color); */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
+    cursor: pointer;
+}
 /* .modal-content .form-input input[type="text"]:hover,
 input[type="date"]:hover,
 select:hover {

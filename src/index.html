@@ -57,24 +57,15 @@
                     <div class="todo-task" id="todo-task">
                         <div class="left-part">
                             <input type="radio" name="" />
-                            <div class="task-name" id="task-name">Grocery</div>
-                        </div>
-
-                        <div class="right-part">
-                            <input type="date" />
-                            <div class="delete-task" id="delete-task">
-                                &times;
+                            <div class="todo-task-name" id="todo-task-name">
+                                Grocery
                             </div>
                         </div>
-                    </div>
-
-                    <div class="todo-task" id="todo-task">
-                        <div class="left-part">
-                            <input type="radio" name="" />
-                            <div class="task-name" id="task-name">Grocery</div>
-                        </div>
 
                         <div class="right-part">
+                            <div class="priority-level" id="priority-level">
+                                High
+                            </div>
                             <input type="date" />
                             <div class="delete-task" id="delete-task">
                                 &times;
@@ -87,29 +78,38 @@
             </div>
         </div>
 
-        <!-- MODAL :) -->
+        <!-- MODALS :) -->
 
+        <!-- ADD PROJECT MODAL -->
+        <div class="modal-project-container">
+            <div class="modal-project" id="modal-project">
+                <div class="form-input">
+                    <label for="project-name">Project name</label>
+                    <input
+                        type="text"
+                        id="project-name"
+                        name="project-name"
+                        required
+                    />
+                    <!-- <small class="hidden" id="hidden"
+                        >Please enter a response.</small
+                        > -->
+                </div>
+                <button class="add-project-name" id="add-project-name">
+                    OK
+                </button>
+            </div>
+        </div>
+
+        <!-- TASK MODAL -->
         <div class="modal-container hidden" id="modal">
             <div class="modal">
-                <button class="close-btn" id="close">
+                <button class="close-btn" id="close-btn">
                     <i class="fa fa-times"></i>
                 </button>
 
                 <div class="modal-content">
                     <form id="form-container">
-                        <div class="form-input">
-                            <label for="project-name">Project name</label>
-                            <input
-                                type="text"
-                                id="project-name"
-                                name="project-name"
-                                required
-                            />
-                            <!-- <small class="hidden" id="hidden"
-                                >Please enter a response.</small
-                            > -->
-                        </div>
-
                         <div class="form-input">
                             <label for="task-name">Task name</label>
                             <input
