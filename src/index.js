@@ -34,27 +34,32 @@ class TodoTask {
     }
 }
 
-// Push todo task to array
-function pushTaskToArray(title, dueDate, priority) {
-    todoArray.push(new TodoTask(title.value, dueDate.value, priority.value));
-}
-
-// if add task is pressed,
-function addTodoTaskList(e) {
-    e.preventDefault();
-
-    // Push the task
-    if (taskName.value) {
-        pushTaskToArray(taskName, datePicker, priorityLevel);
+// Projects class
+class TodoProjects {
+    constructor() {
+        this.projectList = [];
     }
 
-    for (let i in todoArray) {
-        let index = i;
-        content = ``;
+    // Add new task to projects array
+    addNewTask(title, dueDate, priority) {
+        const newTask = new TodoTask(title, dueDate, priority);
+        this.projectList.push(newTask);
     }
 
-    console.log(todoArray);
+    // Add new project, take name from form input and add the project to projectList
+    addNewProject(projectTitle) {}
+
+    // For each project from the project list, create a new div with the name of the current project
+
+    // When pressing +add task, a new todotask should be pushed in current project
 }
+
+const TodoTaskProject = new TodoProjects();
+
+TodoTaskProject.addNewTask("caca", "1222", "high");
+TodoTaskProject.addNewTask("caca", "1222", "high");
+
+console.log(TodoTaskProject.projectList);
 
 // Open add project modal
 function openProjectModal() {
@@ -80,6 +85,6 @@ function closeTaskModal() {
 // open modal
 addTask.addEventListener("click", openTaskModal);
 closeBtnModal.addEventListener("click", closeTaskModal);
-addTaskModal.addEventListener("click", addTodoTaskList);
+// addTaskModal.addEventListener("click", addTodoTaskList);
 addProject.addEventListener("click", openProjectModal);
 addProjectName.addEventListener("click", setProjectName);
