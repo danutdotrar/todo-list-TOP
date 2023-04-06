@@ -58,6 +58,7 @@ const TodoTaskProject = new TodoProjects();
 
 TodoTaskProject.addNewTask("caca", "1222", "high");
 TodoTaskProject.addNewTask("caca", "1222", "high");
+TodoTaskProject.addNewTask("caca", "1222", "high");
 
 console.log(TodoTaskProject.projectList);
 
