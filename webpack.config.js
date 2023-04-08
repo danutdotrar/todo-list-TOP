@@ -6,6 +6,8 @@ module.exports = {
     resolve: {
         fallback: {
             fs: false,
+            fsevents: false,
+            child_process: false,
             tls: false,
             net: false,
             path: false,
@@ -17,6 +19,9 @@ module.exports = {
             async_hooks: false,
             "crypto-browserify": require.resolve("crypto-browserify"), //if you want to use this module also don't forget npm i crypto-browserify
         },
+    },
+    performance: {
+        hints: false,
     },
     entry: "./src/index.js",
     mode: "development",

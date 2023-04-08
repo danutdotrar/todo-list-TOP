@@ -1,3 +1,5 @@
+const { reset } = require("nodemon");
+
 const addProject = document.getElementById("add-project");
 const addTask = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
@@ -10,21 +12,17 @@ const priorityLevel = document.getElementById("objects");
 const addTaskModal = document.getElementById("submit-task");
 const closeBtnModal = document.getElementById("close-btn");
 const modalProject = document.getElementById("modal-project-container");
+const projectList = document.getElementById("project-list");
 
 // Add project modal
 const modalAddProject = document.getElementById("modal-project");
 const addProjectName = document.getElementById("add-project-name");
 
-// When add project is pressed the modal opens
-// Insert project name, task name, date and priority in the modal (take the values)
-// When modal's button 'add task' is pressed, modal closes and the values from the form are inputted in the new task from the project content
-// The 'project name' will be added in the sidebar, this would be a div button
-// If 'project name' is clicked, then it will show the current project with the current tasks
-
 // Create an array that stores the todo tasks
 let todoArray = [];
 let content;
 
+// Create an object that stores title, dueDate and priority
 // Todo task class
 class TodoTask {
     constructor(title, dueDate, priority) {
@@ -33,34 +31,53 @@ class TodoTask {
         this.priority = priority;
     }
 }
-
-// Projects class
-class TodoProjects {
-    constructor() {
-        this.projectList = [];
+let contentProject;
+// Define the project class
+class Project {
+    constructor(name) {
+        this.name = name;
+        this.tasks = [];
     }
 
-    // Add new task to projects array
-    addNewTask(title, dueDate, priority) {
-        const newTask = new TodoTask(title, dueDate, priority);
-        this.projectList.push(newTask);
+    addTask(task) {
+        this.tasks.push(task);
+
+        console.log("miau");
     }
-
-    // Add new project, take name from form input and add the project to projectList
-    addNewProject(projectTitle) {}
-
-    // For each project from the project list, create a new div with the name of the current project
-
-    // When pressing +add task, a new todotask should be pushed in current project
 }
 
-const TodoTaskProject = new TodoProjects();
+// Create a project list class
+class ProjectList {
+    constructor() {
+        this.projects = [];
+    }
 
-TodoTaskProject.addNewTask("caca", "1222", "high");
-TodoTaskProject.addNewTask("caca", "1222", "high");
-TodoTaskProject.addNewTask("caca", "1222", "high");
+    addProject(project) {
+        this.projects.push(project);
 
-console.log(TodoTaskProject.projectList);
+        for (let i in projects) {
+            content = `<div class="todo project-task" id="task">
+                            ${projectName.value}
+                        </div>`;
+        }
+        projectList.insertAdjacentHTML("beforeend", content);
+    }
+}
+
+// Create a new project list
+let myProjectList = new ProjectList();
+
+// Create some projects and tasks and add them to the project list
+// let project1 = new Project("Project 1");
+// let project2 = new Project("Project 1");
+// let todo1 = new TodoTask("LALALALA", "12/12/2022", "HIGH");
+
+// // Add todotask to project1
+// project1.addTask(todo1);
+// console.log(project1);
+
+// myProjectList.addProject(project1);
+// myProjectList.addProject(project2);
 
 // Open add project modal
 function openProjectModal() {
@@ -69,6 +86,9 @@ function openProjectModal() {
 
 // Set the project name and add it to array
 function setProjectName() {
+    let projectNameInput = projectName.value;
+    let newProject = new Project(projectNameInput);
+    myProjectList.addProject(newProject);
     // Remove modal
     modalProject.classList.add("hidden");
 }
@@ -83,9 +103,17 @@ function closeTaskModal() {
     modal.classList.add("hidden");
 }
 
+function setTask(e) {
+    e.preventDefault();
+    console.log("cacat");
+
+    modal.classList.add("hidden");
+}
+
 // open modal
 addTask.addEventListener("click", openTaskModal);
 closeBtnModal.addEventListener("click", closeTaskModal);
-// addTaskModal.addEventListener("click", addTodoTaskList);
+addTaskModal.addEventListener("click", setTask);
+
 addProject.addEventListener("click", openProjectModal);
 addProjectName.addEventListener("click", setProjectName);
