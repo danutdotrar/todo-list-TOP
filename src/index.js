@@ -1,8 +1,8 @@
-const { reset } = require("nodemon");
-
 const addProject = document.getElementById("add-project");
 const addTask = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
+const form = document.getElementById("form-container");
+
 // Task Modal
 const modal = document.getElementById("modal");
 const projectName = document.getElementById("project-name");
@@ -18,102 +18,64 @@ const projectList = document.getElementById("project-list");
 const modalAddProject = document.getElementById("modal-project");
 const addProjectName = document.getElementById("add-project-name");
 
-// Create an array that stores the todo tasks
-let todoArray = [];
-let content;
+// Cream un proiect (obiect) care va contine o lista (obiect) care va contine un todo task (obiect)
 
-// Create an object that stores title, dueDate and priority
-// Todo task class
-class TodoTask {
+// Cream todo task object
+// Ii vom da push in lista de obiecte
+class Todo {
     constructor(title, dueDate, priority) {
         this.title = title;
         this.dueDate = dueDate;
         this.priority = priority;
     }
 }
-let contentProject;
-// Define the project class
-class Project {
-    constructor(name) {
-        this.name = name;
-        this.tasks = [];
-    }
 
-    addTask(task) {
-        this.tasks.push(task);
-
-        console.log("miau");
-    }
-}
-
-// Create a project list class
-class ProjectList {
+// Update
+class TodoList {
     constructor() {
-        this.projects = [];
-    }
-
-    addProject(project) {
-        this.projects.push(project);
-
-        for (let i in projects) {
-            content = `<div class="todo project-task" id="task">
-                            ${projectName.value}
-                        </div>`;
-        }
-        projectList.insertAdjacentHTML("beforeend", content);
+        this.todoTaskList = [];
     }
 }
 
-// Create a new project list
-let myProjectList = new ProjectList();
+// Modal class
+class Modal {
+    constructor() {}
 
-// Create some projects and tasks and add them to the project list
-// let project1 = new Project("Project 1");
-// let project2 = new Project("Project 1");
-// let todo1 = new TodoTask("LALALALA", "12/12/2022", "HIGH");
+    openModal() {
+        modal.classList.remove("hidden");
+    }
 
-// // Add todotask to project1
-// project1.addTask(todo1);
-// console.log(project1);
-
-// myProjectList.addProject(project1);
-// myProjectList.addProject(project2);
-
-// Open add project modal
-function openProjectModal() {
-    modalProject.classList.remove("hidden");
+    closeModal() {
+        modal.classList.add("hidden");
+    }
 }
 
-// Set the project name and add it to array
-function setProjectName() {
-    let projectNameInput = projectName.value;
-    let newProject = new Project(projectNameInput);
-    myProjectList.addProject(newProject);
-    // Remove modal
-    modalProject.classList.add("hidden");
+class ModalProjects {
+    constructor() {}
+
+    openProjectModal() {
+        modalAddProject.projectModal.classList.remove("hidden");
+    }
+
+    closeProjectModal() {
+        modalAddProject.projectModal.classList.add("hidden");
+    }
 }
 
-// Open the task modal
-function openTaskModal() {
-    modal.classList.remove("hidden");
-}
+const mainModal = new Modal();
 
-// Close the task modal
-function closeTaskModal() {
-    modal.classList.add("hidden");
-}
+addTask.addEventListener("click", function () {
+    mainModal.openModal();
+});
 
-function setTask(e) {
+closeBtnModal.addEventListener("click", function () {
+    mainModal.closeModal();
+});
+
+form.addEventListener("submit", function (e) {
     e.preventDefault();
-    console.log("cacat");
+    console.log("merege");
 
-    modal.classList.add("hidden");
-}
-
-// open modal
-addTask.addEventListener("click", openTaskModal);
-closeBtnModal.addEventListener("click", closeTaskModal);
-addTaskModal.addEventListener("click", setTask);
-
-addProject.addEventListener("click", openProjectModal);
-addProjectName.addEventListener("click", setProjectName);
+    mainModal.closeModal();
+    form.reset();
+});
