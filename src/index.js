@@ -1,10 +1,10 @@
+import { Modal, ModalProjects } from "./modules/modals";
+
 const addProject = document.getElementById("add-project");
 const addTask = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
 const form = document.getElementById("form-container");
 
-// Task Modal
-const modal = document.getElementById("modal");
 const projectName = document.getElementById("project-name");
 const taskName = document.getElementById("task-name");
 const datePicker = document.getElementById("date-picker");
@@ -14,8 +14,6 @@ const closeBtnModal = document.getElementById("close-btn");
 const modalProject = document.getElementById("modal-project-container");
 const projectList = document.getElementById("project-list");
 
-// Add project modal
-const modalAddProject = document.getElementById("modal-project-container");
 const addProjectName = document.getElementById("add-project-name");
 
 let taskContent;
@@ -64,7 +62,8 @@ let project2 = new Project("2 test project");
 
 // Add tasks to project1
 project1.addTask("1 Task test for project 1", "12/12/1222", "high");
-project1.addTask("2 Task test for project 1", "12/12/1222", "high");
+project1.addTask("11 Task test for project 1", "12/12/1222", "high");
+project2.addTask("2 Task test for project 2", "12/12/1222", "high");
 console.log(project1);
 
 // Add project1 to myProjectList
@@ -83,31 +82,6 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
     console.log("");
 }
 
-// Modal class
-class Modal {
-    constructor() {}
-
-    openModal() {
-        modal.classList.remove("hidden");
-    }
-
-    closeModal() {
-        modal.classList.add("hidden");
-    }
-}
-
-class ModalProjects {
-    constructor() {}
-
-    openProjectModal() {
-        modalAddProject.classList.remove("hidden");
-    }
-
-    closeProjectModal() {
-        modalAddProject.classList.add("hidden");
-    }
-}
-
 // Create new modals
 const mainModal = new Modal();
 const projectModal = new ModalProjects();
@@ -124,6 +98,7 @@ closeBtnModal.addEventListener("click", function () {
 
 let todoTaskList = new Project();
 
+// Render tasks from todoTaskList
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -178,3 +153,23 @@ addProjectName.addEventListener("click", function () {
     projectName.value = "";
     console.log(myProjectList);
 });
+
+///
+// Create an HTML element for the project list
+let projectListElement = document.createElement("div");
+projectListElement.setAttribute("id", "project-list");
+document.body.appendChild(projectListElement);
+
+for (let i = 0; i < myProjectList.projects.length; i++) {
+    let projectElement = document.createElement("div");
+    projectElement.innerText = myProjectList.projects[i].name;
+    projectListElement.appendChild(projectElement);
+
+    // Add an event listener to the project element to show the tasks for the clicked project
+    projectElement.addEventListener("click", function () {
+        let tasks = myProjectList.projects[i].tasks;
+        for (let j = 0; j < tasks.length; j++) {
+            console.log(tasks[j].title);
+        }
+    });
+}
