@@ -126,6 +126,10 @@ body {
     gap: 25px;
 }
 
+.delete-task {
+    cursor: pointer;
+}
+
 .content .todo-task .right-part .delete-task {
     font-size: 30px;
 }
