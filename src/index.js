@@ -55,6 +55,7 @@ class ProjectList {
 
 // Create a new project list
 let myProjectList = new ProjectList();
+let todoTaskList = new Project();
 
 // Create a new project name
 let project1 = new Project("1 test project");
@@ -82,37 +83,6 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
     console.log("");
 }
 
-// Create new modals
-const mainModal = new Modal();
-const projectModal = new ModalProjects();
-
-// Event listeners
-addTask.addEventListener("click", function () {
-    mainModal.openModal();
-});
-
-closeBtnModal.addEventListener("click", function () {
-    mainModal.closeModal();
-    form.reset();
-});
-
-let todoTaskList = new Project();
-
-// Render tasks from todoTaskList
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    todoTaskList.addTask(taskName.value, datePicker.value, priorityLevel.value);
-
-    renderTasks(todoTaskList);
-
-    taskList.insertAdjacentHTML("beforeend", taskContent);
-
-    mainModal.closeModal();
-    form.reset();
-    console.log(todoTaskList);
-});
-
 function renderTasks(array) {
     for (let i in array) {
         taskContent = `                        <div class="todo-task" id="todo-task" data-todoId=${i}>
@@ -137,29 +107,13 @@ function renderTasks(array) {
     return taskContent;
 }
 
-// Add project and project name
-addProject.addEventListener("click", function () {
-    projectModal.openProjectModal();
-});
-
-addProjectName.addEventListener("click", function () {
-    // Add new project to myProjectList
-    myProjectList.addProject(projectName.value);
-
-    // Close the modal
-    projectModal.closeProjectModal();
-
-    // Clear the modal
-    projectName.value = "";
-    console.log(myProjectList);
-});
-
-///
+// TBD
 // Create an HTML element for the project list
 let projectListElement = document.createElement("div");
 projectListElement.setAttribute("id", "project-list");
 document.body.appendChild(projectListElement);
 
+// Create HTML elements for each project and add them to the project list
 for (let i = 0; i < myProjectList.projects.length; i++) {
     let projectElement = document.createElement("div");
     projectElement.innerText = myProjectList.projects[i].name;
@@ -173,3 +127,51 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
         }
     });
 }
+
+// Event listeners
+
+// Add project and project name
+addProject.addEventListener("click", function () {
+    projectModal.openProjectModal();
+});
+
+addProjectName.addEventListener("click", function () {
+    // Add new project to myProjectList
+    let project = new Project(projectName.value);
+    myProjectList.addProject(project);
+
+    // Close the modal
+    projectModal.closeProjectModal();
+
+    // Clear the modal
+    projectName.value = "";
+    console.log(myProjectList);
+});
+
+// Render tasks from todoTaskList
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    todoTaskList.addTask(taskName.value, datePicker.value, priorityLevel.value);
+
+    renderTasks(todoTaskList);
+
+    taskList.insertAdjacentHTML("beforeend", taskContent);
+
+    mainModal.closeModal();
+    form.reset();
+    console.log(todoTaskList);
+});
+
+// Create new modals
+const mainModal = new Modal();
+const projectModal = new ModalProjects();
+
+addTask.addEventListener("click", function () {
+    mainModal.openModal();
+});
+
+closeBtnModal.addEventListener("click", function () {
+    mainModal.closeModal();
+    form.reset();
+});
