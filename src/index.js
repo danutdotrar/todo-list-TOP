@@ -72,16 +72,16 @@ myProjectList.addProject(project1);
 myProjectList.addProject(project2);
 console.log(myProjectList);
 
-for (let i = 0; i < myProjectList.projects.length; i++) {
-    console.log(`Project ${i + 1}: ${myProjectList.projects[i].name}`);
-    console.log("Tasks:");
-    for (let j = 0; j < myProjectList.projects[i].tasks.length; j++) {
-        console.log(
-            `- ${myProjectList.projects[i].tasks[j].title} (${myProjectList.projects[i].tasks[j].dueDate})`
-        );
-    }
-    console.log("");
-}
+// for (let i = 0; i < myProjectList.projects.length; i++) {
+//     console.log(`Project ${i + 1}: ${myProjectList.projects[i].name}`);
+//     console.log("Tasks:");
+//     for (let j = 0; j < myProjectList.projects[i].tasks.length; j++) {
+//         console.log(
+//             `- ${myProjectList.projects[i].tasks[j].title} (${myProjectList.projects[i].tasks[j].dueDate})`
+//         );
+//     }
+//     console.log("");
+// }
 
 function renderTasks(array) {
     for (let i in array) {
