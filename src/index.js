@@ -70,22 +70,11 @@ console.log(project1);
 // Add project1 to myProjectList
 myProjectList.addProject(project1);
 myProjectList.addProject(project2);
-console.log(myProjectList);
-
-// for (let i = 0; i < myProjectList.projects.length; i++) {
-//     console.log(`Project ${i + 1}: ${myProjectList.projects[i].name}`);
-//     console.log("Tasks:");
-//     for (let j = 0; j < myProjectList.projects[i].tasks.length; j++) {
-//         console.log(
-//             `- ${myProjectList.projects[i].tasks[j].title} (${myProjectList.projects[i].tasks[j].dueDate})`
-//         );
-//     }
-//     console.log("");
-// }
+// console.log(myProjectList);
 
 function renderTasks(array) {
     for (let i in array) {
-        taskContent = `                        <div class="todo-task" id="todo-task" data-todoId=${i}>
+        taskContent = `<div class="todo-task" id="todo-task" data-todoId=${i}>
         <div class="left-part">
             <input type="radio" name="" />
             <div class="todo-task-name" id="todo-task-name">
@@ -118,14 +107,40 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
     // Append projectElement to the Projects list
     projectList.appendChild(projectElement);
 
+    // Cream un button care va avea indexul i,
+    // Assignam task-ul la project[i]
+    // project[i].push(task)
+
     // Add an event listener to the project element to show the tasks for the clicked project
     projectElement.addEventListener("click", function () {
         let tasks = myProjectList.projects[i].tasks;
-        let content;
+        let content = "";
+
+        // FORM
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            myProjectList.projects[i].addTask(
+                taskName.value,
+                datePicker.value,
+                priorityLevel.value
+            );
+
+            renderTasks(todoTaskList);
+
+            taskList.insertAdjacentHTML("beforeend", taskContent);
+
+            mainModal.closeModal();
+            form.reset();
+            console.log(todoTaskList);
+        });
+        // Render tasks from todoTaskList
+
+        // myProjectList.projects[i].addTask(`${i}"caca"`, "1111", "miau");
 
         // Iterate over tasks
         for (let j = 0; j < tasks.length; j++) {
-            console.log(tasks[j].title);
+            // console.log(tasks[j].title);
 
             // Create content for each task
             content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
@@ -149,8 +164,8 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
 
             // Set project main title
             projectTitle.innerText = myProjectList.projects[i].name;
+            taskList.innerHTML = content;
         }
-        taskList.innerHTML = content;
     });
 }
 
@@ -173,20 +188,20 @@ addProjectName.addEventListener("click", function () {
     projectName.value = "";
 });
 
-// Render tasks from todoTaskList
-form.addEventListener("submit", function (e) {
-    e.preventDefault();
+// // Render tasks from todoTaskList
+// form.addEventListener("submit", function (e) {
+//     e.preventDefault();
 
-    todoTaskList.addTask(taskName.value, datePicker.value, priorityLevel.value);
+//     todoTaskList.addTask(taskName.value, datePicker.value, priorityLevel.value);
 
-    renderTasks(todoTaskList);
+//     renderTasks(todoTaskList);
 
-    taskList.insertAdjacentHTML("beforeend", taskContent);
+//     taskList.insertAdjacentHTML("beforeend", taskContent);
 
-    mainModal.closeModal();
-    form.reset();
-    console.log(todoTaskList);
-});
+//     mainModal.closeModal();
+//     form.reset();
+//     console.log(todoTaskList);
+// });
 
 // Create new modals
 const mainModal = new Modal();
