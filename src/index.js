@@ -13,7 +13,7 @@ const addTaskModal = document.getElementById("submit-task");
 const closeBtnModal = document.getElementById("close-btn");
 const modalProject = document.getElementById("modal-project-container");
 const projectList = document.getElementById("project-list");
-
+const projectTitle = document.getElementById("title");
 const addProjectName = document.getElementById("add-project-name");
 
 let taskContent;
@@ -107,24 +107,50 @@ function renderTasks(array) {
     return taskContent;
 }
 
-// TBD
-// Create an HTML element for the project list
-let projectListElement = document.createElement("div");
-projectListElement.setAttribute("id", "project-list");
-document.body.appendChild(projectListElement);
-
 // Create HTML elements for each project and add them to the project list
+// Iterate over projects list
 for (let i = 0; i < myProjectList.projects.length; i++) {
+    // Create project div
     let projectElement = document.createElement("div");
     projectElement.innerText = myProjectList.projects[i].name;
-    projectListElement.appendChild(projectElement);
+    projectElement.className = "todo project-task";
+
+    // Append projectElement to the Projects list
+    projectList.appendChild(projectElement);
 
     // Add an event listener to the project element to show the tasks for the clicked project
     projectElement.addEventListener("click", function () {
         let tasks = myProjectList.projects[i].tasks;
+        let content;
+
+        // Iterate over tasks
         for (let j = 0; j < tasks.length; j++) {
             console.log(tasks[j].title);
+
+            // Create content for each task
+            content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
+                            <div class="left-part">
+                                <input type="radio" name="" />
+                                <div class="todo-task-name" id="todo-task-name">
+                                    ${tasks[j].title}
+                                </div>
+                            </div>
+
+                            <div class="right-part">
+                                <div class="priority-level" id="priority-level">
+                                    ${priorityLevel.value}
+                                </div>
+                                <input type="date" />
+                                <div class="delete-task" id="delete-task">
+                                    &times;
+                                </div>
+                            </div>
+                        </div>`;
+
+            // Set project main title
+            projectTitle.innerText = myProjectList.projects[i].name;
         }
+        taskList.innerHTML = content;
     });
 }
 
@@ -145,7 +171,6 @@ addProjectName.addEventListener("click", function () {
 
     // Clear the modal
     projectName.value = "";
-    console.log(myProjectList);
 });
 
 // Render tasks from todoTaskList
