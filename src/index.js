@@ -135,10 +135,10 @@ function renderProjects() {
                                 </div>
                             </div>
                         </div>`;
-
-                // Set project main title
-                projectTitle.innerText = myProjectList.projects[i].name;
             }
+
+            // Set project main title
+            projectTitle.innerText = myProjectList.projects[i].name;
             taskList.innerHTML = content;
         });
     }
@@ -182,8 +182,10 @@ addProjectName.addEventListener("click", function () {
 
     // Close the modal
     projectModal.closeProjectModal();
+    projectList.innerHTML = "";
 
     renderProjects();
+
     // Clear the modal
     projectName.value = "";
 });
