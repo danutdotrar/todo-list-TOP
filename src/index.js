@@ -55,7 +55,6 @@ class ProjectList {
 
 // Create a new project list
 let myProjectList = new ProjectList();
-let todoTaskList = new Project();
 
 // Create a new project name
 let project1 = new Project("1 test project");
@@ -70,21 +69,20 @@ console.log(project1);
 // Add project1 to myProjectList
 myProjectList.addProject(project1);
 myProjectList.addProject(project2);
-// console.log(myProjectList);
 
-function renderTasks(array) {
+function renderTasks(array, task, priority) {
     for (let i in array) {
         taskContent = `<div class="todo-task" id="todo-task" data-todoId=${i}>
         <div class="left-part">
             <input type="radio" name="" />
             <div class="todo-task-name" id="todo-task-name">
-                ${taskName.value}
+                ${task}
             </div>
         </div>
 
         <div class="right-part">
             <div class="priority-level" id="priority-level">
-                ${priorityLevel.value}
+                ${priority}
             </div>
             <input type="date" />
             <div class="delete-task" id="delete-task">
@@ -97,53 +95,29 @@ function renderTasks(array) {
 }
 
 // Create HTML elements for each project and add them to the project list
-// Iterate over projects list
-for (let i = 0; i < myProjectList.projects.length; i++) {
-    // Create project div
-    let projectElement = document.createElement("div");
-    projectElement.innerText = myProjectList.projects[i].name;
-    projectElement.className = "todo project-task";
+function renderProjects() {
+    // Hold the HTML content for the task list
+    // Iterate over each project in myProjectList
+    for (let i = 0; i < myProjectList.projects.length; i++) {
+        // Create project div
+        let projectElement = document.createElement("div");
+        projectElement.innerText = myProjectList.projects[i].name;
+        projectElement.className = "todo project-task";
 
-    // Append projectElement to the Projects list
-    projectList.appendChild(projectElement);
+        // Append projectElement to the Projects list
+        projectList.appendChild(projectElement);
 
-    // Cream un button care va avea indexul i,
-    // Assignam task-ul la project[i]
-    // project[i].push(task)
+        // Add an event listener to the project element to show the tasks for the clicked project
+        projectElement.addEventListener("click", function () {
+            // Get the list of tasks for the clicked project
+            let tasks = myProjectList.projects[i].tasks;
 
-    // Add an event listener to the project element to show the tasks for the clicked project
-    projectElement.addEventListener("click", function () {
-        let tasks = myProjectList.projects[i].tasks;
-        let content = "";
+            let content = "";
 
-        // FORM
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            myProjectList.projects[i].addTask(
-                taskName.value,
-                datePicker.value,
-                priorityLevel.value
-            );
-
-            renderTasks(todoTaskList);
-
-            taskList.insertAdjacentHTML("beforeend", taskContent);
-
-            mainModal.closeModal();
-            form.reset();
-            console.log(todoTaskList);
-        });
-        // Render tasks from todoTaskList
-
-        // myProjectList.projects[i].addTask(`${i}"caca"`, "1111", "miau");
-
-        // Iterate over tasks
-        for (let j = 0; j < tasks.length; j++) {
-            // console.log(tasks[j].title);
-
-            // Create content for each task
-            content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
+            // Iterate over tasks
+            for (let j = 0; j < tasks.length; j++) {
+                // Create content for each task
+                content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
                             <div class="left-part">
                                 <input type="radio" name="" />
                                 <div class="todo-task-name" id="todo-task-name">
@@ -162,14 +136,38 @@ for (let i = 0; i < myProjectList.projects.length; i++) {
                             </div>
                         </div>`;
 
-            // Set project main title
-            projectTitle.innerText = myProjectList.projects[i].name;
+                // Set project main title
+                projectTitle.innerText = myProjectList.projects[i].name;
+            }
             taskList.innerHTML = content;
-        }
-    });
+        });
+    }
 }
 
+renderProjects();
+
 // Event listeners
+// FORM
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const projectIndex = myProjectList.projects.findIndex(
+        (project) => project.name === projectTitle.innerText
+    );
+
+    myProjectList.projects[projectIndex].addTask(
+        taskName.value,
+        datePicker.value,
+        priorityLevel.value
+    );
+
+    renderTasks(myProjectList, taskName.value, priorityLevel.value);
+
+    taskList.insertAdjacentHTML("beforeend", taskContent);
+    mainModal.closeModal();
+    form.reset();
+    console.log(myProjectList);
+});
 
 // Add project and project name
 addProject.addEventListener("click", function () {
@@ -180,28 +178,15 @@ addProjectName.addEventListener("click", function () {
     // Add new project to myProjectList
     let project = new Project(projectName.value);
     myProjectList.addProject(project);
+    console.log(project);
 
     // Close the modal
     projectModal.closeProjectModal();
 
+    renderProjects();
     // Clear the modal
     projectName.value = "";
 });
-
-// // Render tasks from todoTaskList
-// form.addEventListener("submit", function (e) {
-//     e.preventDefault();
-
-//     todoTaskList.addTask(taskName.value, datePicker.value, priorityLevel.value);
-
-//     renderTasks(todoTaskList);
-
-//     taskList.insertAdjacentHTML("beforeend", taskContent);
-
-//     mainModal.closeModal();
-//     form.reset();
-//     console.log(todoTaskList);
-// });
 
 // Create new modals
 const mainModal = new Modal();
