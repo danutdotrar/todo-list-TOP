@@ -179,12 +179,13 @@ addProjectName.addEventListener("click", function () {
 
     if (projectName.value !== "") {
         myProjectList.addProject(project);
+
+        projectModal.closeProjectModal();
     }
 
     console.log(project);
 
     // Close the modal
-    projectModal.closeProjectModal();
     projectList.innerHTML = "";
 
     renderProjects();
