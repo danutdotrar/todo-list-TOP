@@ -64,7 +64,6 @@ let project2 = new Project("2 test project");
 project1.addTask("1 Task test for project 1", "12/12/1222", "high");
 project1.addTask("11 Task test for project 1", "12/12/1222", "high");
 project2.addTask("2 Task test for project 2", "12/12/1222", "high");
-console.log(project1);
 
 // Add project1 to myProjectList
 myProjectList.addProject(project1);
@@ -177,7 +176,11 @@ addProject.addEventListener("click", function () {
 addProjectName.addEventListener("click", function () {
     // Add new project to myProjectList
     let project = new Project(projectName.value);
-    myProjectList.addProject(project);
+
+    if (projectName.value !== "") {
+        myProjectList.addProject(project);
+    }
+
     console.log(project);
 
     // Close the modal
