@@ -4,7 +4,7 @@ const addProject = document.getElementById("add-project");
 const addTask = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
 const form = document.getElementById("form-container");
-
+const contentDiv = document.getElementById("content");
 const projectName = document.getElementById("project-name");
 const taskName = document.getElementById("task-name");
 const datePicker = document.getElementById("date-picker");
@@ -58,17 +58,49 @@ let myProjectList = new ProjectList();
 
 // Create a new project name
 let project1 = new Project("1 test project");
-let project2 = new Project("2 test project");
 
 // Add tasks to project1
 project1.addTask("1 Task test for project 1", "12/12/1222", "high");
 project1.addTask("11 Task test for project 1", "12/12/1222", "high");
-project2.addTask("2 Task test for project 2", "12/12/1222", "high");
 
 // Add project1 to myProjectList
 myProjectList.addProject(project1);
-myProjectList.addProject(project2);
 
+// Init project
+function initTasks() {
+    for (let i = 0; i < myProjectList.projects.length; i++) {
+        let tasks2 = myProjectList.projects[i].tasks;
+
+        let content = "";
+
+        // Iterate over tasks
+        for (let j = 0; j < tasks2.length; j++) {
+            // Create content for each task
+            content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
+                            <div class="left-part">
+                                <input type="radio" name="" />
+                                <div class="todo-task-name" id="todo-task-name">
+                                    ${tasks2[j].title}
+                                </div>
+                            </div>
+
+                            <div class="right-part">
+                                <div class="priority-level" id="priority-level">
+                                    ${priorityLevel.value}
+                                </div>
+                                <input type="date" />
+                                <div class="delete-task" id="delete-task">
+                                    &times;
+                                </div>
+                            </div>
+                        </div>`;
+        }
+
+        // Set project main title
+        projectTitle.innerText = myProjectList.projects[i].name;
+        taskList.innerHTML = content;
+    }
+}
 function renderTasks(array, task, priority) {
     for (let i in array) {
         taskContent = `<div class="todo-task" id="todo-task" data-todoId=${i}>
@@ -110,7 +142,6 @@ function renderProjects() {
         projectElement.addEventListener("click", function () {
             // Get the list of tasks for the clicked project
             let tasks = myProjectList.projects[i].tasks;
-
             let content = "";
 
             // Iterate over tasks
@@ -143,9 +174,12 @@ function renderProjects() {
     }
 }
 
+// Init app
 renderProjects();
+initTasks();
 
 // Event listeners
+
 // FORM
 form.addEventListener("submit", function (e) {
     e.preventDefault();
