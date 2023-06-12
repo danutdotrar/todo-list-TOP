@@ -7,6 +7,7 @@
 
 :root {
     --green-color: #104547;
+    --red-color: #ff0000;
     --sidebar-green: #acbdb6;
     --box-color: #e4e1e1;
 }
@@ -112,6 +113,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .content .todo-task.done {
@@ -128,6 +130,23 @@ body {
     display: flex;
     align-items: center;
     gap: 55px;
+}
+
+.content .todo-task.delete {
+    opacity: 0.6;
+    background-color: #d38c8c;
+    border-left: 4px solid var(--red-color);
+}
+
+.content .todo-task.delete::after {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 50%;
+    height: 1px;
+    background: #c00;
+    content: "";
+    width: 95%;
 }
 
 .delete-task {
@@ -322,11 +341,6 @@ input[type="checkbox"]:checked {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
     cursor: pointer;
 }
-/* .modal-content .form-input input[type="text"]:hover,
-input[type="date"]:hover,
-select:hover {
-    border: 1px solid var(--green-color);
-} */
 
 .modal .close-btn {
     position: absolute;

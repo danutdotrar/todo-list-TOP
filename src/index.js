@@ -75,7 +75,7 @@ function initTasks() {
         // Iterate over tasks
         for (let j = 0; j < tasks2.length; j++) {
             // Create content for each task
-            content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
+            content += `<div class="todo-task" id="todo-task" data-todoid=${j}>
                             <div class="left-part">
                                 <input type="checkbox" id="check-box" name="" />
                                 <div class="todo-task-name" id="todo-task-name">
@@ -104,7 +104,7 @@ function initTasks() {
 // Render the new tasks
 function renderTasks(array, task, priority) {
     for (let i in array) {
-        taskContent = `<div class="todo-task" id="todo-task" data-todoId=${i}>
+        taskContent = `<div class="todo-task" id="todo-task" data-todoid=${i}>
         <div class="left-part">
             <input type="checkbox" id="check-box" name="" />
             <div class="todo-task-name" id="todo-task-name">
@@ -148,7 +148,9 @@ function renderProjects() {
             // Iterate over tasks
             for (let j = 0; j < tasks.length; j++) {
                 // Create content for each task
-                content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
+                content += `<div class="todo-task" id="todo-task" data-todoid=${[
+                    j,
+                ]}>
                             <div class="left-part">
                                 <input type="checkbox" id="check-box" name="" />
                                 <div class="todo-task-name" id="todo-task-name">
@@ -175,13 +177,19 @@ function renderProjects() {
     }
 }
 
-// Check if the checkbox is checked
+// Check or delete the task
 // Use event delegation - add event listener to the parent element
-function checkTheCheckBox(e) {
+function checkOrDelete(e) {
     // if the target matches the div that we want, do stuff
+
     if (e.target.matches("#check-box")) {
         const currentDiv = e.target.closest(".todo-task");
         currentDiv.classList.toggle("done");
+    }
+
+    if (e.target.matches("#delete-task")) {
+        const currentDivForDelete = e.target.closest(".todo-task");
+        currentDivForDelete.classList.toggle("delete");
     }
 }
 
@@ -190,7 +198,6 @@ renderProjects();
 initTasks();
 
 // Event listeners
-
 // FORM
 form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -205,7 +212,7 @@ form.addEventListener("submit", function (e) {
         priorityLevel.value
     );
 
-    renderTasks(myProjectList, taskName.value, priorityLevel.value);
+    renderTasks(myProjectList.projects, taskName.value, priorityLevel.value);
 
     taskList.insertAdjacentHTML("beforeend", taskContent);
     mainModal.closeModal();
@@ -240,7 +247,7 @@ addProjectName.addEventListener("click", function () {
 });
 
 // check div
-taskList.addEventListener("click", checkTheCheckBox);
+taskList.addEventListener("click", checkOrDelete);
 
 // Create new modals
 const mainModal = new Modal();
