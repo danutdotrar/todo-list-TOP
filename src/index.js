@@ -60,8 +60,7 @@ let myProjectList = new ProjectList();
 let project1 = new Project("1 test project");
 
 // Add tasks to project1
-project1.addTask("1 Task test for project 1", "12/12/1222", "high");
-project1.addTask("11 Task test for project 1", "12/12/1222", "high");
+project1.addTask("1 Task test for project 1", "15/1/2021", "high");
 
 // Add project1 to myProjectList
 myProjectList.addProject(project1);
@@ -78,7 +77,7 @@ function initTasks() {
             // Create content for each task
             content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
                             <div class="left-part">
-                                <input type="radio" name="" />
+                                <input type="checkbox" id="check-box" name="" />
                                 <div class="todo-task-name" id="todo-task-name">
                                     ${tasks2[j].title}
                                 </div>
@@ -101,11 +100,13 @@ function initTasks() {
         taskList.innerHTML = content;
     }
 }
+
+// Render the new tasks
 function renderTasks(array, task, priority) {
     for (let i in array) {
         taskContent = `<div class="todo-task" id="todo-task" data-todoId=${i}>
         <div class="left-part">
-            <input type="radio" name="" />
+            <input type="checkbox" id="check-box" name="" />
             <div class="todo-task-name" id="todo-task-name">
                 ${task}
             </div>
@@ -149,7 +150,7 @@ function renderProjects() {
                 // Create content for each task
                 content += `<div class="todo-task" id="todo-task" data-todoId=${j}>
                             <div class="left-part">
-                                <input type="radio" name="" />
+                                <input type="checkbox" id="check-box" name="" />
                                 <div class="todo-task-name" id="todo-task-name">
                                     ${tasks[j].title}
                                 </div>
@@ -171,6 +172,16 @@ function renderProjects() {
             projectTitle.innerText = myProjectList.projects[i].name;
             taskList.innerHTML = content;
         });
+    }
+}
+
+// Check if the checkbox is checked
+// Use event delegation - add event listener to the parent element
+function checkTheCheckBox(e) {
+    // if the target matches the div that we want, do stuff
+    if (e.target.matches("#check-box")) {
+        const currentDiv = e.target.closest(".todo-task");
+        currentDiv.classList.toggle("done");
     }
 }
 
@@ -227,6 +238,9 @@ addProjectName.addEventListener("click", function () {
     // Clear the modal
     projectName.value = "";
 });
+
+// check div
+taskList.addEventListener("click", checkTheCheckBox);
 
 // Create new modals
 const mainModal = new Modal();
