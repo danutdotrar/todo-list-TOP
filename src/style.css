@@ -118,6 +118,7 @@ body {
 
 .content .todo-task.done {
     opacity: 0.6;
+    background-color: #84c57e;
 }
 
 .content .todo-task .left-part {
@@ -140,10 +141,11 @@ body {
 
 .content .todo-task.delete::after {
     position: absolute;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
     left: 50%;
     top: 50%;
-    height: 1px;
+    height: 2px;
     background: #c00;
     content: "";
     width: 95%;
